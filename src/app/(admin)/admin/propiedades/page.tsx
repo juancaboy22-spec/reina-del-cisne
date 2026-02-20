@@ -60,8 +60,8 @@ export default async function AdminPropiedadesPage() {
               {propiedades.map((propiedad) => (
                 <tr key={propiedad.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="font-mono text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                      RDC-{String(propiedad.codigo ?? 0).padStart(3, '0')}
+                    <span className="font-mono text-sm font-semibold bg-gold-100 text-gold-700 px-3 py-1 rounded-full">
+                      {propiedad.codigo_propiedad || "N/A"}
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -99,7 +99,10 @@ export default async function AdminPropiedadesPage() {
                       >
                         Editar
                       </Link>
-                      <DeleteButton id={propiedad.id} titulo={propiedad.titulo} />
+                      <DeleteButton
+                        id={propiedad.id}
+                        titulo={propiedad.titulo}
+                      />
                     </div>
                   </td>
                 </tr>
