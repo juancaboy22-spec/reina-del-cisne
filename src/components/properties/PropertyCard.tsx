@@ -5,13 +5,13 @@ import { formatearPrecio, formatearArea } from '@/lib/utils'
 import { MapPin, BedDouble, Bath, Maximize } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
  
-export default function PropertyCard({ propiedad }: { propiedad: Propiedad }) {
+export default function PropertyCard({ propiedad, imageHeight = 'h-52' }: { propiedad: Propiedad; imageHeight?: string }) {
   const img = propiedad.imagen_principal || propiedad.imagenes?.[0]?.url || '/placeholder.jpg'
- 
+
   return (
     <Link href={`/propiedades/${propiedad.id}`} className='card-property group block'>
       {/* Imagen */}
-      <div className='relative h-52 overflow-hidden'>
+      <div className={`relative ${imageHeight} overflow-hidden`}>
         <Image src={img} alt={propiedad.titulo} fill className='object-cover
                group-hover:scale-105 transition-transform duration-500' />
         <div className='absolute top-3 left-3 flex gap-2'>

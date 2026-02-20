@@ -1,31 +1,31 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
 
 @theme {
-  --color-navy-50:  #E8EDF3;
-  --color-navy-100: #C5D3E0;
-  --color-navy-500: #2E6096;
-  --color-navy-700: #1B3A5C;
-  --color-navy-900: #0D1E30;
+  --color-navy-50: #e8edf3;
+  --color-navy-100: #c5d3e0;
+  --color-navy-500: #2e6096;
+  --color-navy-700: #1b3a5c;
+  --color-navy-900: #0d1e30;
 
-  --color-gold-50:  #FDF8EC;
-  --color-gold-100: #F5E9C8;
-  --color-gold-400: #D4A843;
-  --color-gold-500: #C9A84C;
-  --color-gold-700: #8C6B1E;
-
-  --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Playfair Display', serif;
+  --color-gold-50: #fdf8ec;
+  --color-gold-100: #f5e9c8;
+  --color-gold-400: #d4a843;
+  --color-gold-500: #c9a84c;
+  --color-gold-700: #8c6b1e;
 }
 
 @layer base {
-  * { box-sizing: border-box; }
+  * {
+    box-sizing: border-box;
+  }
   body {
     @apply bg-white text-gray-800 antialiased;
-    font-family: var(--font-sans);
+    font-family: var(--font-sans), sans-serif;
   }
-  h1, h2, h3 {
-    font-family: var(--font-serif);
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif), serif;
   }
 }
 

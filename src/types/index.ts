@@ -8,6 +8,7 @@ export interface Imagen {
  
 export interface Propiedad {
   id: string
+  codigo?: number
   titulo: string
   descripcion?: string
   tipo: TipoPropiedad

@@ -21,7 +21,7 @@ export async function POST(request: Request) {
  
     // 2. Enviar email al asesor
     await resend.emails.send({
-      from: 'noreply@reinadelcisne.com',
+      from: 'Reina del Cisne <onboarding@resend.dev>',
       to: process.env.EMAIL_ASESOR!,
       subject: `Nuevo contacto de ${nombre} - Reina del Cisne`,
       html: `
