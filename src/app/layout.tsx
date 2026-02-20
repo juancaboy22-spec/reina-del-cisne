@@ -18,6 +18,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://reinadelcisne.com"),
   title: {
     template: "%s | Reina del Cisne",
     default: "Inmobiliaria Reina del Cisne - Loja, Ecuador",

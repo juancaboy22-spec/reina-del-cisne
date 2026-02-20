@@ -7,14 +7,14 @@ type Props = {
   params: Promise<{ id: string }>;
 };
 
+const BASE_URL = "https://reinadelcisne.com";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const propiedad = await PropiedadesRepository.obtenerPorId(id);
 
   if (!propiedad) {
-    return {
-      title: "Propiedad no encontrada",
-    };
+    return { title: "Propiedad no encontrada" };
   }
 
   const imagenes = Array.isArray(propiedad.imagenes) ? propiedad.imagenes : [];
@@ -25,13 +25,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         : imagenes[0]?.url || ""
       : "";
 
+  const pageUrl = `${BASE_URL}/propiedades/${id}`;
+  const descripcion =
+    propiedad.descripcion ||
+    `${propiedad.tipo === "casa" ? "Casa" : "Lote"} en ${propiedad.ciudad} — $${propiedad.precio.toLocaleString()} USD`;
+
   return {
     title: propiedad.titulo,
-    description: propiedad.descripcion || "",
+    description: descripcion,
     openGraph: {
       title: propiedad.titulo,
-      description: propiedad.descripcion || "",
-      images: imageUrl ? [imageUrl] : [],
+      description: descripcion,
+      url: pageUrl,
+      siteName: "Inmobiliaria Reina del Cisne",
+      locale: "es_EC",
+      type: "website",
+      images: imageUrl
+        ? [{ url: imageUrl, width: 1200, height: 630, alt: propiedad.titulo }]
+        : [],
     },
   };
 }
