@@ -1,7 +1,7 @@
 ﻿import { Propiedad } from "@/types";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
+import WhatsAppButton from "@/components/shared/WhatsAppButton";
 
 interface PropertyDetailProps {
   propiedad: Propiedad;
@@ -136,10 +136,7 @@ export function PropertyDetail({ propiedad }: PropertyDetailProps) {
             <p className="text-gray-600 mb-6">
               Contáctanos para más información o para agendar una visita.
             </p>
-            <WhatsAppButton
-              mensaje={`Hola, me interesa la propiedad: ${propiedad.titulo} (${formatPrecio(propiedad.precio)})`}
-              className="w-full mb-4"
-            />
+            <WhatsAppButton />
             <div className="border-t pt-4 mt-4">
               <p className="text-sm text-gray-500">
                 Código: {propiedad.id.slice(0, 8).toUpperCase()}
