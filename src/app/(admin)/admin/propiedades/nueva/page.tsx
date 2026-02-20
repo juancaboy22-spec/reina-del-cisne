@@ -91,15 +91,15 @@ export default function NuevaPropiedadPage() {
         </div>
  
         {/* Campos del formulario */}
-        <div className='grid md:grid-cols-2 gap-4'>
+        <div className='grid md:grid-cols-2 gap-6'>
           <div className='md:col-span-2'>
-            <Label>Título *</Label>
-            <Input required value={form.titulo} onChange={e => setForm({...form, titulo: e.target.value})} />
+            <Label htmlFor='titulo' className='block text-sm font-semibold text-gray-700 mb-2'>Título *</Label>
+            <Input id='titulo' required value={form.titulo} onChange={e => setForm({...form, titulo: e.target.value})} />
           </div>
           <div>
-            <Label>Tipo *</Label>
+            <Label htmlFor='tipo' className='block text-sm font-semibold text-gray-700 mb-2'>Tipo *</Label>
             <Select value={form.tipo} onValueChange={v => setForm({...form, tipo: v})}>
-              <SelectTrigger><SelectValue /></SelectTrigger>
+              <SelectTrigger id='tipo' className='w-full'><SelectValue /></SelectTrigger>
               <SelectContent>
                 <SelectItem value='lote'>Lote</SelectItem>
                 <SelectItem value='casa'>Casa</SelectItem>
@@ -107,24 +107,24 @@ export default function NuevaPropiedadPage() {
             </Select>
           </div>
           <div>
-            <Label>Precio (USD) *</Label>
-            <Input required type='number' value={form.precio} onChange={e => setForm({...form, precio: e.target.value})} />
+            <Label htmlFor='precio' className='block text-sm font-semibold text-gray-700 mb-2'>Precio (USD) *</Label>
+            <Input id='precio' required type='number' value={form.precio} onChange={e => setForm({...form, precio: e.target.value})} />
           </div>
           <div>
-            <Label>Área (m²)</Label>
-            <Input type='number' value={form.area} onChange={e => setForm({...form, area: e.target.value})} />
+            <Label htmlFor='area' className='block text-sm font-semibold text-gray-700 mb-2'>Área (m²)</Label>
+            <Input id='area' type='number' value={form.area} onChange={e => setForm({...form, area: e.target.value})} />
           </div>
           <div>
-            <Label>Ciudad</Label>
-            <Input value={form.ciudad} onChange={e => setForm({...form, ciudad: e.target.value})} />
+            <Label htmlFor='ciudad' className='block text-sm font-semibold text-gray-700 mb-2'>Ciudad</Label>
+            <Input id='ciudad' value={form.ciudad} onChange={e => setForm({...form, ciudad: e.target.value})} />
           </div>
           <div className='md:col-span-2'>
-            <Label>Ubicación / Dirección *</Label>
-            <Input required value={form.ubicacion} onChange={e => setForm({...form, ubicacion: e.target.value})} />
+            <Label htmlFor='ubicacion' className='block text-sm font-semibold text-gray-700 mb-2'>Ubicación / Dirección *</Label>
+            <Input id='ubicacion' required value={form.ubicacion} onChange={e => setForm({...form, ubicacion: e.target.value})} />
           </div>
           <div className='md:col-span-2'>
-            <Label>Descripción</Label>
-            <Textarea rows={4} value={form.descripcion} onChange={e => setForm({...form, descripcion: e.target.value})} />
+            <Label htmlFor='descripcion' className='block text-sm font-semibold text-gray-700 mb-2'>Descripción</Label>
+            <Textarea id='descripcion' rows={4} value={form.descripcion} onChange={e => setForm({...form, descripcion: e.target.value})} />
           </div>
           <div className='md:col-span-2 flex gap-6'>
             <label className='flex items-center gap-2 cursor-pointer'>
