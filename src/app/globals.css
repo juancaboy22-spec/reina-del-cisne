@@ -22,11 +22,6 @@
     @apply bg-white text-gray-800 antialiased;
     font-family: var(--font-sans), sans-serif;
   }
-  h1,
-  h2,
-  h3 {
-    font-family: var(--font-serif), serif;
-  }
 }
 
 @layer components {

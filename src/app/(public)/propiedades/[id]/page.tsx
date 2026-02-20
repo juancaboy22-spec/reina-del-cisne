@@ -4,11 +4,12 @@ import { PropiedadesRepository } from "@/repositories/propiedades.repository";
 import type { Metadata } from "next";
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const propiedad = await PropiedadesRepository.obtenerPorId(params.id);
+  const { id } = await params;
+  const propiedad = await PropiedadesRepository.obtenerPorId(id);
 
   if (!propiedad) {
     return {
@@ -16,19 +17,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const imagenes = Array.isArray(propiedad.imagenes) ? propiedad.imagenes : [];
+  const imageUrl =
+    imagenes.length > 0
+      ? typeof imagenes[0] === "string"
+        ? imagenes[0]
+        : imagenes[0]?.url || ""
+      : "";
+
   return {
     title: propiedad.titulo,
-    description: propiedad.descripcion,
+    description: propiedad.descripcion || "",
     openGraph: {
       title: propiedad.titulo,
-      description: propiedad.descripcion,
-      images: propiedad.imagenes.length > 0 ? [propiedad.imagenes[0]] : [],
+      description: propiedad.descripcion || "",
+      images: imageUrl ? [imageUrl] : [],
     },
   };
 }
 
 export default async function PropiedadDetallePage({ params }: Props) {
-  const propiedad = await PropiedadesRepository.obtenerPorId(params.id);
+  const { id } = await params;
+  const propiedad = await PropiedadesRepository.obtenerPorId(id);
 
   if (!propiedad) {
     notFound();
@@ -48,7 +58,10 @@ export default async function PropiedadDetallePage({ params }: Props) {
       addressCountry: "EC",
       streetAddress: propiedad.ubicacion,
     },
-    image: propiedad.imagenes,
+    image:
+      propiedad.imagenes?.map((img) =>
+        typeof img === "string" ? img : img?.url,
+      ) || [],
     url: `https://reinadelcisne.com/propiedades/${propiedad.id}`,
   };
 

@@ -1,16 +1,21 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { PropiedadesRepository } from "@/repositories/propiedades.repository";
 import type { Metadata } from "next";
 import DeleteButton from "./DeleteButton";
+import AdminPropiedadesSearch from "./AdminPropiedadesSearch";
 
 export const metadata: Metadata = {
   title: "Administrar Propiedades",
 };
 
-export default async function AdminPropiedadesPage() {
-  const propiedades = await PropiedadesRepository.listar({
-    disponible: undefined,
-  });
+export default async function AdminPropiedadesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ busqueda?: string; tipo?: string }>;
+}) {
+  const { busqueda, tipo } = await searchParams;
+  const propiedades = await PropiedadesRepository.listarAdmin({ busqueda, tipo });
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -24,9 +29,15 @@ export default async function AdminPropiedadesPage() {
         </Link>
       </div>
 
+      <Suspense fallback={null}>
+        <AdminPropiedadesSearch />
+      </Suspense>
+
       {propiedades.length === 0 ? (
         <div className="text-center py-12 text-gray-500">
-          No hay propiedades registradas
+          {busqueda || tipo
+            ? "No se encontraron propiedades con ese criterio"
+            : "No hay propiedades registradas"}
         </div>
       ) : (
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
