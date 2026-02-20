@@ -34,18 +34,26 @@ export default function ContactForm({ propiedadId }: { propiedadId?: string }) {
  
   return (
     <form onSubmit={handleSubmit} className='space-y-5'>
-      <div><Label htmlFor='nombre'>Nombre completo *</Label>
+      <div className='space-y-1.5'>
+        <Label htmlFor='nombre'>Nombre completo *</Label>
         <Input id='nombre' required value={form.nombre}
-               onChange={e => setForm({...form, nombre: e.target.value})} /></div>
-      <div><Label htmlFor='email'>Correo electrónico *</Label>
+               onChange={e => setForm({...form, nombre: e.target.value})} />
+      </div>
+      <div className='space-y-1.5'>
+        <Label htmlFor='email'>Correo electrónico *</Label>
         <Input id='email' type='email' required value={form.email}
-               onChange={e => setForm({...form, email: e.target.value})} /></div>
-      <div><Label htmlFor='telefono'>Teléfono / WhatsApp</Label>
+               onChange={e => setForm({...form, email: e.target.value})} />
+      </div>
+      <div className='space-y-1.5'>
+        <Label htmlFor='telefono'>Teléfono / WhatsApp</Label>
         <Input id='telefono' value={form.telefono}
-               onChange={e => setForm({...form, telefono: e.target.value})} /></div>
-      <div><Label htmlFor='mensaje'>Mensaje *</Label>
+               onChange={e => setForm({...form, telefono: e.target.value})} />
+      </div>
+      <div className='space-y-1.5'>
+        <Label htmlFor='mensaje'>Mensaje *</Label>
         <Textarea id='mensaje' required rows={4} value={form.mensaje}
-                  onChange={e => setForm({...form, mensaje: e.target.value})} /></div>
+                  onChange={e => setForm({...form, mensaje: e.target.value})} />
+      </div>
       {error && <p className='text-red-500 text-sm'>{error}</p>}
       <button type='submit' disabled={loading} className='btn-primary w-full'>
         {loading ? 'Enviando...' : 'Enviar Mensaje'}

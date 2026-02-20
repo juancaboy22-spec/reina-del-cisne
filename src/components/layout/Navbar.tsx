@@ -82,6 +82,13 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
+          <a
+            href="tel:+593996009652"
+            className="flex items-center justify-center gap-2 btn-gold text-sm w-full mt-2"
+            onClick={() => setOpen(false)}
+          >
+            <Phone size={16} /> Llámanos
+          </a>
         </div>
       )}
     </header>
