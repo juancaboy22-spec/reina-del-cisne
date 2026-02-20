@@ -201,7 +201,6 @@ export default function EditarPropiedadForm({
             value={form.precio}
             onChange={(v) => setForm({ ...form, precio: v })}
             id="precio"
-            className="h-11"
           />
         </div>
 
