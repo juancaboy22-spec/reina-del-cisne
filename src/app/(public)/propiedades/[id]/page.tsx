@@ -7,7 +7,7 @@ type Props = {
   params: Promise<{ id: string }>;
 };
 
-const BASE_URL = "https://reinadelcisne.com";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://reina-del-cisne.vercel.app";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
@@ -73,7 +73,7 @@ export default async function PropiedadDetallePage({ params }: Props) {
       propiedad.imagenes?.map((img) =>
         typeof img === "string" ? img : img?.url,
       ) || [],
-    url: `https://reinadelcisne.com/propiedades/${propiedad.id}`,
+    url: `${BASE_URL}/propiedades/${propiedad.id}`,
   };
 
   return (

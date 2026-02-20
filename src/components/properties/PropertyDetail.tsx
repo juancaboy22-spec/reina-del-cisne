@@ -56,7 +56,7 @@ export function PropertyDetail({ propiedad }: PropertyDetailProps) {
   );
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
-  const propiedadUrl = `https://reinadelcisne.com/propiedades/${propiedad.id}`;
+  const propiedadUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://reina-del-cisne.vercel.app"}/propiedades/${propiedad.id}`;
   const shareWhatsappUrl = `https://wa.me/?text=${encodeURIComponent(`🏠 ${propiedad.titulo} — $${propiedad.precio.toLocaleString()} USD\n${propiedadUrl}`)}`;
   const shareFacebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(propiedadUrl)}`;
 

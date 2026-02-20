@@ -18,7 +18,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://reinadelcisne.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://reina-del-cisne.vercel.app"),
   title: {
     template: "%s | Reina del Cisne",
     default: "Inmobiliaria Reina del Cisne - Loja, Ecuador",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_EC",
-    url: "https://reinadelcisne.com",
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://reina-del-cisne.vercel.app",
     siteName: "Inmobiliaria Reina del Cisne",
   },
 };
