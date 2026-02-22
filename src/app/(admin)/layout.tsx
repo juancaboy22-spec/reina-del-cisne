@@ -20,6 +20,7 @@ export default function AdminLayout({
   const handleLogout = () => {
     setIsLoggingOut(true);
     supabase.auth.signOut().finally(() => {
+      setIsLoggingOut(false);
       router.push("/admin/login");
     });
   };
