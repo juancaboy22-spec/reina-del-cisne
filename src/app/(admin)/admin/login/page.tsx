@@ -16,10 +16,19 @@ export default function LoginPage() {
  
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
-    setLoading(true); setError('')
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
-    if (error) { setError('Credenciales incorrectas'); setLoading(false) }
-    else router.push('/admin/dashboard')
+    setLoading(true)
+    setError('')
+    
+    const { error, data } = await supabase.auth.signInWithPassword({ email, password })
+    
+    if (error) {
+      setError('Credenciales incorrectas')
+      setLoading(false)
+    } else if (data.user) {
+      // Esperar a que la sesión se actualice en las cookies
+      await new Promise(resolve => setTimeout(resolve, 500))
+      router.push('/admin/dashboard')
+    }
   }
  
   return (
