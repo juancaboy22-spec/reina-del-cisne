@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     const body = await request.json()
     const { nombre, email, telefono, mensaje, propiedad_id } = body
 
-    if (!nombre || !email || !mensaje) {
+    if (!nombre || !email || !telefono || !mensaje) {
       return NextResponse.json({ error: 'Campos requeridos faltantes' }, { status: 400 })
     }
 
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
           </h2>
           <p><strong>Nombre:</strong> ${nombre}</p>
           <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-          <p><strong>Teléfono:</strong> ${telefono || 'No proporcionado'}</p>
+          <p><strong>Teléfono:</strong> <a href="tel:${telefono}">${telefono}</a></p>
           ${propiedad_id ? `<p><strong>Propiedad de interés (ID):</strong> ${propiedad_id}</p>` : ''}
           <p><strong>Mensaje:</strong></p>
           <blockquote style="background:#f5f5f5; padding: 12px 16px; border-left: 4px solid #C9A84C; margin: 0;">

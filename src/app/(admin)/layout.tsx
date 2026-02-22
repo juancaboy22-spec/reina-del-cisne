@@ -51,28 +51,27 @@ export default function AdminLayout({
 
       {/* Navigation */}
       <nav className="bg-navy-700 border-b-4 border-gold-400">
-        <div className="container mx-auto px-4 py-4 flex gap-8 items-center">
-          <Link
-            href="/admin/dashboard"
-            className="text-gold-400 hover:text-gold-300 transition-all duration-300 font-semibold text-lg relative group"
-          >
-            Dashboard
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-300 group-hover:w-full transition-all duration-300"></span>
-          </Link>
-          <Link
-            href="/admin/propiedades"
-            className="text-gold-400 hover:text-gold-300 transition-all duration-300 font-semibold text-lg relative group"
-          >
-            Propiedades
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-300 group-hover:w-full transition-all duration-300"></span>
-          </Link>
-          <Link
-            href="/admin/contactos"
-            className="text-gold-400 hover:text-gold-300 transition-all duration-300 font-semibold text-lg relative group"
-          >
-            Contactos
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold-300 group-hover:w-full transition-all duration-300"></span>
-          </Link>
+        <div className="container mx-auto px-4 py-4 flex gap-2 items-center">
+          {[
+            { href: "/admin/dashboard", label: "Dashboard" },
+            { href: "/admin/propiedades", label: "Propiedades" },
+            { href: "/admin/contactos", label: "Contactos" },
+          ].map(({ href, label }) => {
+            const isActive = pathname === href || pathname.startsWith(href + "/");
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-200 ${
+                  isActive
+                    ? "bg-gold-500 text-navy-900 shadow-md"
+                    : "text-gold-400 hover:text-white hover:bg-white/10"
+                }`}
+              >
+                {label}
+              </Link>
+            );
+          })}
 
           {/* Logout button */}
           <button
