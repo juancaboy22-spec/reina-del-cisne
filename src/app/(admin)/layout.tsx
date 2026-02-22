@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { ArrowLeft, Home, LogOut } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
+import { Home, LogOut } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { useState } from "react";
 
@@ -11,14 +11,22 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
+  const pathname = usePathname();
   const supabase = createClient();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  const isLoginPage = pathname === "/admin/login";
 
   const handleLogout = async () => {
     setIsLoggingOut(true);
     await supabase.auth.signOut();
+    setIsLoggingOut(false);
     router.push("/admin/login");
   };
+
+  if (isLoginPage) {
+    return <>{children}</>;
+  }
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -69,10 +77,10 @@ export default function AdminLayout({
           <button
             onClick={handleLogout}
             disabled={isLoggingOut}
-            className="ml-auto flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg disabled:opacity-50"
+            className="ml-auto flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <LogOut size={18} />
-            {isLoggingOut ? "Cerrando..." : "Cerrar sesión"}
+            {isLoggingOut ? "Cerrando sesión..." : "Cerrar sesión"}
           </button>
         </div>
       </nav>
