@@ -17,11 +17,11 @@ export default function AdminLayout({
 
   const isLoginPage = pathname === "/admin/login";
 
-  const handleLogout = async () => {
+  const handleLogout = () => {
     setIsLoggingOut(true);
-    await supabase.auth.signOut();
-    setIsLoggingOut(false);
-    router.push("/admin/login");
+    supabase.auth.signOut().finally(() => {
+      router.push("/admin/login");
+    });
   };
 
   if (isLoginPage) {

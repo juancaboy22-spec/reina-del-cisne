@@ -28,8 +28,7 @@ export default function LoginPage() {
       setError("Credenciales incorrectas");
       setLoading(false);
     } else if (data.user) {
-      // Esperar a que la sesión se actualice en las cookies
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      router.refresh();
       router.push("/admin/dashboard");
     }
   };

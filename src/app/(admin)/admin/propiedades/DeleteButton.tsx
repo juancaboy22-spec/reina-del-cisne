@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom'
 import { useRouter } from 'next/navigation'
 import { Trash2, AlertTriangle } from 'lucide-react'
 
-export default function DeleteButton({ id, titulo }: { id: string; titulo: string }) {
+export default function DeleteButton({ id, titulo, fullWidth }: { id: string; titulo: string; fullWidth?: boolean }) {
   const [abierto, setAbierto] = useState(false)
   const [loading, setLoading] = useState(false)
   const router = useRouter()
@@ -30,7 +30,7 @@ export default function DeleteButton({ id, titulo }: { id: string; titulo: strin
       {/* Botón disparador */}
       <button
         onClick={() => setAbierto(true)}
-        className="flex items-center gap-1 text-red-600 hover:text-red-800 bg-red-50 hover:bg-red-100 px-3 py-1 rounded transition-colors"
+        className={`flex items-center justify-center gap-1 text-red-600 hover:text-red-800 bg-red-50 hover:bg-red-100 px-3 py-1 rounded transition-colors${fullWidth ? ' w-full py-2 text-sm font-medium rounded-lg' : ''}`}
       >
         <Trash2 size={14} />
         Eliminar
