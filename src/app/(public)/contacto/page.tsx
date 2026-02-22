@@ -4,7 +4,28 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contacto",
   description:
-    "Contáctanos para más información sobre nuestras propiedades en Loja, Ecuador.",
+    "Contáctanos para asesoría personalizada y gratuita sobre lotes y casas en venta en Loja, Ecuador. Escríbenos por WhatsApp al +593 99 600 9652 o llena el formulario.",
+  alternates: {
+    canonical: "/contacto",
+  },
+  openGraph: {
+    title: "Contacto - Inmobiliaria Reina del Cisne",
+    description:
+      "Asesoría personalizada y gratuita sobre propiedades en Loja, Ecuador. Escríbenos por WhatsApp o llena el formulario.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 520,
+        height: 520,
+        alt: "Contacto Inmobiliaria Reina del Cisne",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Contacto - Inmobiliaria Reina del Cisne",
+    description: "Asesoría gratuita sobre propiedades en Loja, Ecuador.",
+  },
 };
 
 export default function ContactoPage() {

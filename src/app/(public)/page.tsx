@@ -4,6 +4,20 @@ import { PropiedadesRepository } from "@/repositories/propiedades.repository";
 import PropertyCard from "@/components/properties/PropertyCard";
 import { Propiedad } from "@/types";
 import { Star, Shield, TrendingUp } from "lucide-react";
+import type { Metadata } from "next";
+
+export const revalidate = 3600;
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Inmobiliaria Reina del Cisne - Loja, Ecuador",
+    description:
+      "Encuentra lotes y casas en venta en Loja, Ecuador. Escrituras en regla, precios justos y asesoría personalizada sin costo.",
+  },
+};
 
 export default async function HomePage() {
   // Las páginas no saben nada de Supabase — solo hablan con el repositorio

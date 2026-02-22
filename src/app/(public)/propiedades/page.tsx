@@ -5,9 +5,33 @@ import { Propiedad } from "@/types";
 import { Suspense } from "react";
 import type { Metadata } from "next";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Propiedades en Venta",
-  description: "Listado de lotes y casas disponibles en Loja, Ecuador",
+  description:
+    "Explora lotes y casas en venta en Loja, Ecuador. Encuentra tu propiedad ideal con precios justos y asesoría personalizada de Inmobiliaria Reina del Cisne.",
+  alternates: {
+    canonical: "/propiedades",
+  },
+  openGraph: {
+    title: "Propiedades en Venta - Loja, Ecuador",
+    description:
+      "Lotes y casas disponibles en Loja, Ecuador. Precios justos y escrituras en regla.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 520,
+        height: 520,
+        alt: "Propiedades en venta Loja Ecuador",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Propiedades en Venta - Loja, Ecuador",
+    description: "Lotes y casas disponibles en Loja, Ecuador.",
+  },
 };
 
 export default async function PropiedadesPage({
@@ -29,6 +53,24 @@ export default async function PropiedadesPage({
       : params.tipo === "casa"
         ? "Casas"
         : "Todas las propiedades";
+
+  const BASE_URL =
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://reina-del-cisne.vercel.app";
+
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Propiedades en venta en Loja, Ecuador",
+    description:
+      "Listado de lotes y casas disponibles en Inmobiliaria Reina del Cisne",
+    numberOfItems: propiedades.length,
+    itemListElement: propiedades.map((p, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${BASE_URL}/propiedades/${p.id}`,
+      name: p.titulo,
+    })),
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -77,6 +119,11 @@ export default async function PropiedadesPage({
           </div>
         )}
       </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
     </div>
   );
 }
