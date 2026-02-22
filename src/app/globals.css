@@ -12,6 +12,19 @@
   --color-gold-400: #d4a843;
   --color-gold-500: #c9a84c;
   --color-gold-700: #8c6b1e;
+
+  --animation-fadeIn: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @layer base {
@@ -39,3 +52,7 @@
            transition-all duration-300 overflow-hidden border border-gray-100;
   }
 }
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-in;
