@@ -13,7 +13,14 @@ export const metadata: Metadata = {
     title: "Contacto - Inmobiliaria Reina del Cisne",
     description:
       "Asesoría personalizada y gratuita sobre propiedades en Loja, Ecuador. Escríbenos por WhatsApp o llena el formulario.",
-    images: [{ url: "/logo.png", width: 520, height: 520, alt: "Contacto Inmobiliaria Reina del Cisne" }],
+    images: [
+      {
+        url: "/logo.png",
+        width: 520,
+        height: 520,
+        alt: "Contacto Inmobiliaria Reina del Cisne",
+      },
+    ],
   },
   twitter: {
     card: "summary",
@@ -35,13 +42,18 @@ export default function ContactoPage() {
       <div className="bg-navy-900 py-24 text-center text-white relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
-          style={{ backgroundImage: "repeating-linear-gradient(90deg, #C9A84C 0px, #C9A84C 1px, transparent 1px, transparent 80px)" }}
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(90deg, #C9A84C 0px, #C9A84C 1px, transparent 1px, transparent 80px)",
+          }}
         />
         <div className="relative">
           <p className="text-gold-400 uppercase tracking-[0.3em] text-xs font-semibold mb-4">
             Estamos para ayudarte
           </p>
-          <h1 className="font-serif text-5xl md:text-6xl font-bold">Contáctanos</h1>
+          <h1 className="font-serif text-5xl md:text-6xl font-bold">
+            Contáctanos
+          </h1>
           <div className="w-16 h-px bg-gold-500 mx-auto mt-5" />
         </div>
       </div>
@@ -49,13 +61,15 @@ export default function ContactoPage() {
       {/* Content */}
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-5 gap-8 items-start">
-
           {/* Panel izquierdo — info */}
           <div className="lg:col-span-2">
             <div className="bg-navy-800 rounded-2xl p-8 text-white sticky top-8">
-              <h2 className="font-serif text-2xl font-bold mb-1">Información de contacto</h2>
-              <p className="text-blue-200 text-sm mb-8 leading-relaxed">
-                Escríbenos directamente por WhatsApp o completa el formulario y te respondemos a la brevedad.
+              <h2 className="font-serif text-2xl font-bold mb-1">
+                Información de contacto
+              </h2>
+              <p className="text-gold-400 text-sm mb-8 leading-relaxed">
+                Escríbenos directamente por WhatsApp o completa el formulario y
+                te respondemos a la brevedad.
               </p>
 
               <div className="space-y-6">
@@ -64,8 +78,13 @@ export default function ContactoPage() {
                     <Phone size={18} className="text-gold-400" />
                   </div>
                   <div>
-                    <p className="text-xs text-blue-300 uppercase tracking-wider mb-1">Teléfono / WhatsApp</p>
-                    <a href="tel:+593996009652" className="font-semibold hover:text-gold-300 transition-colors">
+                    <p className="text-xs text-gold-400 uppercase tracking-wider mb-1">
+                      Teléfono / WhatsApp
+                    </p>
+                    <a
+                      href="tel:+593996009652"
+                      className="font-semibold text-gold-400 hover:text-gold-300 transition-colors"
+                    >
                       +593 99 600 9652
                     </a>
                   </div>
@@ -76,8 +95,13 @@ export default function ContactoPage() {
                     <MapPin size={18} className="text-gold-400" />
                   </div>
                   <div>
-                    <p className="text-xs text-blue-300 uppercase tracking-wider mb-1">Ubicación</p>
-                    <p className="font-semibold">Loja, Ecuador</p>
+                    <p className="text-xs text-gold-400 uppercase tracking-wider mb-1">
+                      Ubicación
+                    </p>
+                    <p className="font-semibold text-gold-400">
+                      Calle Sucre y 10 de Agosto. Edf.Jiménez segundo piso
+                      oficina 106
+                    </p>
                   </div>
                 </div>
 
@@ -86,9 +110,11 @@ export default function ContactoPage() {
                     <Clock size={18} className="text-gold-400" />
                   </div>
                   <div>
-                    <p className="text-xs text-blue-300 uppercase tracking-wider mb-1">Horario de atención</p>
-                    <p className="font-semibold">Lun – Sáb</p>
-                    <p className="text-blue-300 text-sm">8:00 AM – 6:00 PM</p>
+                    <p className="text-xs text-gold-400 uppercase tracking-wider mb-1">
+                      Horario de atención
+                    </p>
+                    <p className="font-semibold text-gold-400">Lun – Sáb</p>
+                    <p className="font-semibold text-gold-400">8:00 AM – 18:00 PM</p>
                   </div>
                 </div>
               </div>
@@ -111,7 +137,9 @@ export default function ContactoPage() {
           <div className="lg:col-span-3">
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
               <div className="mb-6">
-                <h2 className="text-xl font-bold text-navy-700">Envíanos un mensaje</h2>
+                <h2 className="text-xl font-bold text-navy-700">
+                  Envíanos un mensaje
+                </h2>
                 <p className="text-gray-400 text-sm mt-1">
                   Todos los campos son obligatorios.
                 </p>
@@ -119,7 +147,6 @@ export default function ContactoPage() {
               <ContactForm />
             </div>
           </div>
-
         </div>
       </div>
     </div>

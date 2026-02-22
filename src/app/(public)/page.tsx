@@ -43,7 +43,7 @@ export default async function HomePage() {
             Encuentra tu <span className="text-gold-400">propiedad ideal</span>
           </h1>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-10">
-            Lotes y casas en las mejores ubicaciones de Loja, Ecuador. Con la
+            Lotes y casas en las mejores ubicaciones de Loja-Zamora, Ecuador. Con la
             confianza y experiencia que mereces.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

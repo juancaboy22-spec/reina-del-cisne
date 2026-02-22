@@ -28,7 +28,9 @@ export default function Footer() {
           <ul className='space-y-3 text-sm text-gray-400'>
             <li className='flex gap-2'><Phone size={16} className='text-gold-400 shrink-0 mt-0.5'/> +593 99 600 9652</li>
             <li className='flex gap-2'><Mail size={16} className='text-gold-400 shrink-0 mt-0.5'/>guadalupem25j@yahoo.es</li>
-            <li className='flex gap-2'><MapPin size={16} className='text-gold-400 shrink-0 mt-0.5'/> Loja, Ecuador</li>
+            <li className='flex gap-2'><MapPin size={16} className='text-gold-400 shrink-0 mt-0.5'/> Loja, Ecuador, Calle Sucre y 10 de Agosto.
+Edf.Jiménez segundo piso
+oficina 106</li>
           </ul>
         </div>
       </div>
